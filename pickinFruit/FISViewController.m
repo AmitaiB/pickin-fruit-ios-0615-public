@@ -20,8 +20,17 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-
-    self.fruitsArray = @[@"Apple",@"Orange",@"Banana",@"Pear",@"Grape", @"Kiwi", @"Mango", @"Blueberry", @"Raspberry"];
+    self.fruitPicker.delegate = self;
+    self.fruitPicker.dataSource = self;
+    self.fruitsArray = @[@"Apple",
+                         @"Orange",
+                         @"Banana",
+                         @"Pear",
+                         @"Grape",
+                         @"Kiwi", 
+                         @"Mango", 
+                         @"Blueberry", 
+                         @"Raspberry"];
 }
 
 - (void)didReceiveMemoryWarning
@@ -30,9 +39,24 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
+{
+    return 3;
+}
+
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
+{
+    return self.fruitsArray.count;
+}
+
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+{
+    return self.fruitsArray[row]; 
+}
 
 - (IBAction)spin:(id)sender {
-
-#warning Implement this method!
+    for (NSUInteger component = 0; component < 3; component++) {
+        [self.fruitPicker selectRow:2  inComponent:component animated:YES];
+    }
 }
 @end
