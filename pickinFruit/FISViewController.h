@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FISViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
+@interface FISViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource, UIAlertViewDelegate>
 
 @property (strong, nonatomic) NSArray *fruitsArray;
 @property (strong, nonatomic) IBOutlet UIPickerView *fruitPicker;
